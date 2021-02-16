@@ -7,6 +7,8 @@ const cors = require('cors');
 // create an instance of express to serve our end points
 const app = express();
 
+const PORT = process.env.PORT || 5000
+
 // including handling JSON data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -76,9 +78,13 @@ app.post('/new', function(request, response){
 // });
 
 // Serve the root url: http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function(request, response) {
-  response.sendFile(path.join(srcPath, "", "index.html"));
+// app.get("/", function(request, response) {
+//   response.sendFile(path.join(srcPath, "", "index.html"));
+// });
+app.get('/', (req, res) => {
+  res.send('Hello World');
 });
+
 
 //full path could be used as well:
 // app.get("/", function(request, response) {
@@ -86,7 +92,7 @@ app.get("/", function(request, response) {
 // });
 
 // Listen on port 8080
-var listener = app.listen(8080, function() {
+var listener = app.listen(PORT, function() {
   console.log("Listening on port " + listener.address().port);
 });
 
