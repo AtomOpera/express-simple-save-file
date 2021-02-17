@@ -52,7 +52,7 @@ app.use(cors());
 //   }
 // }));
 
-let dataInTxt ="";
+let dataInTxt ="Hello!";
 fs.readFile('/etc/passwd', (err, data) => {
   if (err) throw err;
   console.log(data);
@@ -89,7 +89,7 @@ app.post('/new', function(request, response){
 //   response.sendFile(path.join(srcPath, "", "index.html"));
 // });
 app.get('/', (req, res) => {
-  res.send(`${dataInTxt} Hello World`);
+  res.send(dataInTxt);
 });
 
 
