@@ -54,7 +54,7 @@ app.use(cors());
 var fs = require("fs");
 
 let dataInTxt ="Hello!";
-fs.readFile("./src/test.txt", 'utf8', (err, data) => {
+fs.readFile("./src/test.json", 'utf8', (err, data) => {
   if (err) throw err;
   console.log(data);
   dataInTxt = JSON.stringify(data);
@@ -62,7 +62,7 @@ fs.readFile("./src/test.txt", 'utf8', (err, data) => {
 
 function saveFile(input) {
   
-  fs.writeFile("./src/test.txt", input, function(err) {
+  fs.writeFile("./src/test.json", input, function(err) {
     if (err) {
       console.log(err);
     } else {
@@ -90,10 +90,10 @@ app.post('/new', function(request, response){
 //   response.sendFile(path.join(srcPath, "", "index.html"));
 // });
 app.get('/', (req, res) => {
-  fs.readFile("./src/test.txt", 'utf8', (err, data) => {
+  fs.readFile("./src/test.json", 'utf8', (err, data) => {
     if (err) throw err;
     console.log(data);
-    res.send(JSON.stringify(data));
+    res.send(JSON.parse(data));
     //dataInTxt = JSON.stringify(data);
   });
   // res.send(dataInTxt);
