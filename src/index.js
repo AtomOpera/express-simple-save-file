@@ -90,7 +90,13 @@ app.post('/new', function(request, response){
 //   response.sendFile(path.join(srcPath, "", "index.html"));
 // });
 app.get('/', (req, res) => {
-  res.send(dataInTxt);
+  fs.readFile("./src/test.txt", 'utf8', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.send(JSON.stringify(data));
+    //dataInTxt = JSON.stringify(data);
+  });
+  // res.send(dataInTxt);
 });
 
 
