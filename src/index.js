@@ -51,17 +51,18 @@ app.use(cors());
 //     return callback(null, true);
 //   }
 // }));
+var fs = require("fs");
 
 let dataInTxt ="Hello!";
-fs.readFile('/etc/passwd', (err, data) => {
+fs.readFile("./src/test.txt", 'utf8', (err, data) => {
   if (err) throw err;
   console.log(data);
-  dataInTxt = data;
+  dataInTxt = JSON.stringify(data);
 });
 
 function saveFile(input) {
-  var fs = require("fs");
-  fs.writeFile("/sandbox/src/test.txt", input, function(err) {
+  
+  fs.writeFile("./src/test.txt", input, function(err) {
     if (err) {
       console.log(err);
     } else {
@@ -89,7 +90,7 @@ app.post('/new', function(request, response){
 //   response.sendFile(path.join(srcPath, "", "index.html"));
 // });
 app.get('/', (req, res) => {
-  res.send("hello w");
+  res.send(dataInTxt);
 });
 
 
