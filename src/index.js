@@ -53,13 +53,6 @@ app.use(cors());
 // }));
 var fs = require("fs");
 
-let dataInTxt ="Hello!";
-fs.readFile("./src/test.json", 'utf8', (err, data) => {
-  if (err) throw err;
-  console.log(data);
-  dataInTxt = JSON.stringify(data);
-});
-
 function saveFile(input) {
   
   fs.writeFile("./src/test.json", input, function(err) {
@@ -78,6 +71,16 @@ app.post('/new', function(request, response){
   console.log(request.body);      // your JSON
   saveFile(JSON.stringify(request.body));
   response.send(request.body);    // echo the result back
+});
+
+app.get('/getData', (req, res) => {
+  fs.readFile("./src/test.json", 'utf8', (err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.send(JSON.parse(data));
+    //dataInTxt = JSON.stringify(data);
+  });
+  // res.send(dataInTxt);
 });
 // app.post("/new", urlencodedParser, function(request, response) {
 //   console.log(request);
