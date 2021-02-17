@@ -89,7 +89,7 @@ app.post('/new', function(request, response){
 //   response.sendFile(path.join(srcPath, "", "index.html"));
 // });
 app.get('/', (req, res) => {
-  res.send(dataInTxt);
+  res.send("hello w");
 });
 
 
