@@ -1,19 +1,31 @@
 {
   "name": "express-simple-save-file",
   "version": "1.0.0",
-  "description": "",
+  "description": "Created with CodeSandbox",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "start dev": "nodemon src/index.js"
+    "build": "netlify-lambda build express",
+    "start": "nodemon src/index.js",
+    "start dev": "node src/index.js"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "body-parser": "1.19.0",
     "cors": "2.8.5",
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "netlify-lambda": "^1.6.3",
+    "nodemon": "1.18.4",
+    "serverless-http": "^2.3.0"
   },
-  "devDependencies": {
-    "nodemon": "1.18.4"
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtomOpera/express-simple-save-file.git"
   },
-  "keywords": []
+  "author": "Abraham Cabrera Valdivia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AtomOpera/express-simple-save-file/issues"
+  },
+  "homepage": "https://github.com/AtomOpera/express-simple-save-file#readme"
 }

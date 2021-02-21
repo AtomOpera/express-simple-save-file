@@ -1,3 +1,7 @@
+'use strict';
+const fs = require("fs");
+const serverless = require('serverless-http');
+
 // init project
 // load up the express framework and body-parser helper
 const express = require('express');
@@ -18,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // var express = require("express");
 // var app = express();
 // var cors = require('cors');
-var path = require("path");
+const path = require('path');
 const srcPath = __dirname;
 // var bodyParser = require("body-parser");
 // // Use bodyParser to parse application/x-www-form-urlencoded form data
