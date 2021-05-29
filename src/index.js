@@ -1,7 +1,3 @@
-'use strict';
-const fs = require("fs");
-const serverless = require('serverless-http');
-
 // init project
 // load up the express framework and body-parser helper
 const express = require('express');
@@ -10,8 +6,6 @@ const cors = require('cors');
 
 // create an instance of express to serve our end points
 const app = express();
-
-const PORT = process.env.PORT || 5000
 
 // including handling JSON data
 app.use(bodyParser.json());
@@ -22,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // var express = require("express");
 // var app = express();
 // var cors = require('cors');
-const path = require('path');
+var path = require("path");
 const srcPath = __dirname;
 // var bodyParser = require("body-parser");
 // // Use bodyParser to parse application/x-www-form-urlencoded form data
@@ -55,11 +49,10 @@ app.use(cors());
 //     return callback(null, true);
 //   }
 // }));
-var fs = require("fs");
 
 function saveFile(input) {
-  
-  fs.writeFile("./src/test.json", input, function(err) {
+  var fs = require("fs");
+  fs.writeFile("./src/test.txt", input, function(err) {
     if (err) {
       console.log(err);
     } else {
@@ -74,17 +67,7 @@ function saveFile(input) {
 app.post('/new', function(request, response){
   console.log(request.body);      // your JSON
   saveFile(JSON.stringify(request.body));
-  response.send(request.body);    // echo the result back
-});
-
-app.get('/getData', (req, res) => {
-  fs.readFile("./src/test.json", 'utf8', (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    res.send(JSON.parse(data));
-    //dataInTxt = JSON.stringify(data);
-  });
-  // res.send(dataInTxt);
+  // response.send(request.body);    // echo the result back
 });
 // app.post("/new", urlencodedParser, function(request, response) {
 //   console.log(request);
@@ -93,19 +76,9 @@ app.get('/getData', (req, res) => {
 // });
 
 // Serve the root url: http://expressjs.com/en/starter/basic-routing.html
-// app.get("/", function(request, response) {
-//   response.sendFile(path.join(srcPath, "", "index.html"));
-// });
-app.get('/', (req, res) => {
-  fs.readFile("./src/test.json", 'utf8', (err, data) => {
-    if (err) throw err;
-    console.log(data);
-    res.send(JSON.parse(data));
-    //dataInTxt = JSON.stringify(data);
-  });
-  // res.send(dataInTxt);
+app.get("/", function(request, response) {
+  response.sendFile(path.join(srcPath, "", "index.html"));
 });
-
 
 //full path could be used as well:
 // app.get("/", function(request, response) {
@@ -113,7 +86,7 @@ app.get('/', (req, res) => {
 // });
 
 // Listen on port 8080
-var listener = app.listen(PORT, function() {
+var listener = app.listen(8080, function() {
   console.log("Listening on port " + listener.address().port);
 });
 
