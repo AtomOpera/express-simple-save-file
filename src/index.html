@@ -15,6 +15,16 @@
       <h1>
         Users
       </h1>
+      <h3 id="url"><b>URL: </b>Loading...</h3>
+      <h3 id="user"><b>User: </b>Loading...</h3>
+      <input
+          id="userInput"
+          name="user"
+          type="text"
+          maxlength="100"
+          value=""
+          placeholder="Add a user"
+        />
     </header>
 
     <main>
@@ -32,7 +42,35 @@
         />
         <button type="submit">Add</button>
       </form>
+      <form
+        action="/user"
+        method="GET"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <input
+          name="user"
+          type="text"
+          maxlength="100"
+          value=""
+          placeholder="Add a user"
+        />
+        <button type="submit">Add</button>
+      </form>
     </main>
 
+    <script>
+
+      const user = document.getElementById('user');
+      const url = window.location.href;
+      document.getElementById('url').innerHTML = "<b>URL: </b>" + url;
+      
+      fetch(url+"user")
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          user.innerHTML="<b>User: </b>" + data;
+        });
+  
+    </script>
   </body>
 </html>

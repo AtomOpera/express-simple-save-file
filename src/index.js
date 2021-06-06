@@ -75,6 +75,13 @@ app.post('/new', function(request, response){
 //   response.redirect("/");
 // });
 
+app.get('/user', function(request, response){
+  // console.log(request.body);      // your JSON
+  // response.send('Enzo');    // echo the result back
+  response.set('Content-Type', 'text/html');
+  response.send(JSON.stringify('Enzo'));
+});
+
 // Serve the root url: http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(request, response) {
   response.sendFile(path.join(srcPath, "", "index.html"));
