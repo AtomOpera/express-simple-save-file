@@ -66,6 +66,7 @@ function saveFile(input) {
 // Create a new entry
 app.post('/new', function(request, response){
   console.log(request.body);      // your JSON
+  // saveFile(request.body);
   saveFile(JSON.stringify(request.body));
   // response.send(request.body);    // echo the result back
 });

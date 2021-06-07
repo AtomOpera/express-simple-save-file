@@ -25,6 +25,7 @@
           value=""
           placeholder="Add a user"
         />
+        <button id="submitButton">write</button>
     </header>
 
     <main>
@@ -61,8 +62,12 @@
     <script>
 
       const user = document.getElementById('user');
+      const userInput = document.getElementById('userInput');
+      const submitButton = document.getElementById('submitButton');
       const url = window.location.href;
       document.getElementById('url').innerHTML = "<b>URL: </b>" + url;
+
+      const userObj = { user: userInput.value};
       
       fetch(url+"user")
         .then(response => response.json())
@@ -70,6 +75,20 @@
           console.log(data);
           user.innerHTML="<b>User: </b>" + data;
         });
+
+      function write() {
+        console.log(userInput.value);
+        fetch(url+"new", {
+          method: 'POST', // or 'PUT'
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify(userObj),
+        }).catch((error) => {
+          console.error('Error:', error);
+        });
+      };
+      submitButton.addEventListener('click', write);
   
     </script>
   </body>
