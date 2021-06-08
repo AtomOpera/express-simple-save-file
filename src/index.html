@@ -26,9 +26,10 @@
           placeholder="Add a user"
         />
         <button id="submitButton">write</button>
+        <button id="readAgainButton">read again</button>
     </header>
 
-    <main>
+    <!-- <main>
       <form
         action="/new"
         method="POST"
@@ -57,24 +58,28 @@
         />
         <button type="submit">Add</button>
       </form>
-    </main>
+    </main> -->
 
     <script>
 
       const user = document.getElementById('user');
       const userInput = document.getElementById('userInput');
       const submitButton = document.getElementById('submitButton');
+      const readAgainButton = document.getElementById('readAgainButton');
       const url = window.location.href;
       document.getElementById('url').innerHTML = "<b>URL: </b>" + url;
 
       const userObj = { user: userInput.value};
       
-      fetch(url+"user")
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          user.innerHTML="<b>User: </b>" + data;
-        });
+      function read() {
+        fetch(url+"user")
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            user.innerHTML="<b>User: </b>" + data;
+          });
+      };
+      read();
 
       function write() {
         console.log(userInput.value);
@@ -95,6 +100,7 @@
         });
       };
       submitButton.addEventListener('click', write);
+      readAgainButton.addEventListener('click', read);
   
     </script>
   </body>
