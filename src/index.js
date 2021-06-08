@@ -49,9 +49,8 @@ app.use(cors());
 //     return callback(null, true);
 //   }
 // }));
-
+var fs = require("fs");
 function saveFile(input) {
-  var fs = require("fs");
   fs.writeFile("./src/test.txt", input, function(err) {
     if (err) {
       console.log(err);
@@ -62,6 +61,8 @@ function saveFile(input) {
   return 0;
 };
 // saveFile("hey there!");
+
+
 
 // Create a new entry
 app.post('/new', function(request, response){
@@ -80,7 +81,12 @@ app.get('/user', function(request, response){
   // console.log(request.body);      // your JSON
   // response.send('Enzo');    // echo the result back
   response.set('Content-Type', 'text/html');
-  response.send(JSON.stringify('Enzo'));
+  fs.readFile("./src/test.txt", 'utf8', function (err, data) {
+    if (err) throw err;
+    console.log(data);
+    response.send(JSON.stringify(data));
+  });
+  
 });
 
 // Serve the root url: http://expressjs.com/en/starter/basic-routing.html
