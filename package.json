@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "build": "netlify-lambda build express",
-    "start": "nodemon src/index.js",
-    "start dev": "node src/index.js"
+    "start": "node src/index.js",
+    "start dev": "nodemon src/index.js"
   },
   "dependencies": {},
   "devDependencies": {
