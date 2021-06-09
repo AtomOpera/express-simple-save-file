@@ -1,0 +1,17 @@
+---
+application:
+  name: "express-simple-save-file"
+  project: "express-simple-save-file"
+  organization: "QoveryCommunity"
+  # publicly_accessible: true
+  # storage:
+  # - name: images
+  #   type: ssd
+  #   size: 1GB
+  #   mount_point: /mnt/images
+routers:
+- name: "main-express-simple-save-file"
+  routes:
+  - application_name: "express-simple-save-file"
+    paths:
+    - "/*"
