@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm install
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD [ "node", "src/index.js" ]
 
 # EXPOSE 3000
 # CMD node ./bin/www
